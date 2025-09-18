@@ -60,8 +60,13 @@ def evaluate_models(X_train, y_train,X_test,y_test,models,param):
     
 def load_object(file_path):
     try:
+        print(f"Trying to load file from: {file_path}")   
         with open(file_path, "rb") as file_obj:
-            return pickle.load(file_obj)
+            obj = pickle.load(file_obj)
+        print(f"Loaded successfully: {file_path}")     
+        return obj
 
     except Exception as e:
+        print("Error in load_object:", e)                
         raise CustomException(e, sys)
+
